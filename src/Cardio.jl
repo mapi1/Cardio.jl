@@ -2,7 +2,7 @@ module Cardio
 
 using DSP
 using Statistics
-using MedianFilter
+# using MedianFilter
 using Plots
 
 include("util.jl")
