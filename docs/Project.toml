@@ -1,0 +1,3 @@
+[deps]
+Cardio = "2ed24fd3-b6ad-475f-ae55-8f4b1ccf3cea"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
