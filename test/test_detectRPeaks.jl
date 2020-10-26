@@ -1,7 +1,8 @@
 using CSV
 
 # Random ECG of length 40s with a known number of 52 Beats
-ecg = CSV.read("./test/data/ecg.csv")[:,1]
+ecg = CSV.read(joinpath(dirname(@__FILE__), "data", "ecg.csv"))[:,1]
+
 sf = 250
 peaks = 53
 @testset "Test detection" begin
