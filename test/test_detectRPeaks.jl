@@ -1,7 +1,8 @@
 using CSV
+using DataFrames
 
 # Random ECG of length 40s with a known number of 52 Beats
-ecg = CSV.read(joinpath(dirname(@__FILE__), "data", "ecg.csv"))[:,1]
+ecg = CSV.read(joinpath(dirname(@__FILE__), "data", "ecg.csv"), DataFrame)[!, :ECG]
 
 sf = 250
 peaks = 53
