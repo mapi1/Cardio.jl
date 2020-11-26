@@ -2,7 +2,7 @@ using Cardio
 using Test
 using Random
 
-testfiles = ["test_adaptive_hrv_filter.jl", "test_detectRPeaks.jl"]
+testfiles = ["test_adaptive_hrv_filter.jl", "test_detectRPeaks.jl", "test_util.jl"]
 
 Random.seed!(1776)
 
