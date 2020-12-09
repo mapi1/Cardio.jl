@@ -2,7 +2,7 @@
 # FIND_R_PEAKS Detect RR peaks according to method by Benitez et al.
 #
 """
-    detectRPeaks(ecg::Vector{<:Number}, samplerate::Number)
+    detectRPeaks(ecg::Vector{<:Real}, samplerate::Real; minPeakDist::Real = 0.360)
 TODO check minDist
 Find R peaks in ECG signals as specified by Benitez et al.
 See http://dx.doi.org/10.1016/S0010-4825(01)00009-9 for more information
