@@ -176,16 +176,16 @@ function correct_heaps_return_median!(left, right)
     if abs(len_left - len_right) >= 2
         len_left > len_right ? transferTop!(left, right) : transferTop!(right, left)
         if abs(len_left - len_right) == 2
-            currentMedian = 0.5 * top(left).value + 0.5 * top(right).value
+            currentMedian = 0.5 * first(left).value + 0.5 * first(right).value
             return currentMedian
         end
     end
     if len_left == len_right
-        currentMedian = 0.5 * top(left).value + 0.5 * top(right).value
+        currentMedian = 0.5 * first(left).value + 0.5 * first(right).value
     elseif len_left > len_right
-        currentMedian = top(left).value
+        currentMedian = first(left).value
     else
-        currentMedian = top(right).value
+        currentMedian = first(right).value
     end
     return currentMedian
 end
@@ -213,10 +213,10 @@ function initialize_filter(x_iter)
     currentElement = MedianElement(popfirst!(x_iter), false, -1)
     currentElement.handle = push!(right, currentElement)
     enqueue!(delete_queue, currentElement)
-    if top(right).value < top(left).value
+    if first(right).value < first(left).value
         swapTops!(left, right)
     end
-    currentMedian = 0.5 * top(left).value + 0.5 * top(right).value
+    currentMedian = 0.5 * first(left).value + 0.5 * first(right).value
     push!(result, currentMedian);
 
     return (result, left, right, delete_queue)
