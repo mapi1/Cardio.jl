@@ -28,3 +28,11 @@
     @test_throws DomainError detrend(y_linear, p = -1, return_coefs = true)
     @test_throws DomainError detrend(y_linear, p = 0, coefs = coefs, return_coefs = true)
 end
+
+@testset "Theil Sen estimator" begin
+    @test theilSenEstimator(collect(1:10), collect(1:10)) == (1,0)
+
+    # Errors
+    @test_throws DomainError theilSenEstimator([1,2], [3,4,5])
+  
+end

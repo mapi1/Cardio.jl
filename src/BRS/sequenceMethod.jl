@@ -114,6 +114,11 @@ function sme(RR::Vector{<:Real}, SBP::Vector{<:Real}; thresholdRR::Float64 = 5.0
     # return (median(slopes), median(slopeUp), median(slopeDown), nUp, nDown)
 end
 
+"""
+    rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
+
+Returns the RMSSD ratio 
+"""
 function rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
     rmssdr = rms(RR) / rms(SBP)
 end
@@ -182,38 +187,4 @@ end
 end
 
 
-"""
-    theilSenEstimator(x, y)
 
-Calculate the Teil Sen Estimator (median of all slopes m = (yⱼ - yᵢ)/(xⱼ - xᵢ )). Stable up to ~27% outliers
-
-# Args:
-
-* 'x::Vector': Data Vector containing x values
-* 'y::Vector': Data Vector containing y values
-
-# Return:
-
-* '(m, b)::Tuple': m represents slope, b the intersect
-
-# Examples
-
-```jldoctest
-julia> theilSenEstimator(1:10, 1:10)
-(1.0,0.0)
-```
-
-"""
-function theilSenEstimator(x, y)
-    len = length(y)
-    @assert len == length(x) "Input Vectors have to be of same length"
-    indices = 1:len
-    m = Vector{Float64}(undef, len - 1)
-    for ii = 1:len-1
-        indices = mod.(indices, len) .+ 1
-        m[ii] = median((y - y[indices]) ./ (x - x[indices]))
-    end
-    m = median(m)
-    b = median(y .- m*x)
-    return (m, b)
-end

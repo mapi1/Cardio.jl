@@ -1,12 +1,10 @@
 module Cardio
 
+using DataStructures
 using DSP
 using Statistics
 using Plots
 using Random
-using DataStructures
-using Parameters
-using RecipesBase
 
 
 include("Utilities/util.jl")
@@ -17,14 +15,13 @@ include("Filtering/medfilt1.jl")
 include("Detection/detectRPeaks.jl")
 include("Detection/baseline.jl")
 
-include("BRS/sequenceMethod.jl")
+include("BRS/BRS.jl")
 
 export detectRPeaks,
         adaptive_hrv_filter,
-        detrend,
+        detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,
-        sme, SME,
-        rmssdr
+        BRS
 
 end

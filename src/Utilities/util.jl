@@ -50,3 +50,39 @@ function detrend(signal::Vector{<:Real}; p::Int = 1, coefs::Union{Vector{<:Real}
         return signal .- trend
     end
 end
+
+"""
+    theilSenEstimator(x, y)
+
+Calculate the Teil Sen Estimator (median of all slopes m = (yⱼ - yᵢ)/(xⱼ - xᵢ )). Stable up to ~27% outliers
+
+# Args:
+
+* 'x::Vector': Data Vector containing x values
+* 'y::Vector': Data Vector containing y values
+
+# Return:
+
+* '(m, b)::Tuple': m represents slope, b the intersect
+
+# Examples
+
+```jldoctest
+julia> theilSenEstimator(1:10, 1:10)
+(1.0,0.0)
+```
+
+"""
+function theilSenEstimator(x::Vector{<:Real}, y::Vector{<:Real})
+    len = length(y)
+    len == length(x) || throw(DomainError("Input Vectors have to be of same length"))   
+    indices = 1:len
+    m = Vector{Float64}(undef, len - 1)
+    for ii = 1:len-1
+        indices = mod.(indices, len) .+ 1
+        m[ii] = median((y - y[indices]) ./ (x - x[indices]))
+    end
+    m = median(m)
+    b = median(y .- m*x)
+    return (m, b)
+end
