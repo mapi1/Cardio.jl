@@ -2,11 +2,9 @@
 CurrentModule = Cardio
 ```
 
-# Cardio
+# Cardio.jl
+A simple toolbox that bundles functionality to work with cardiovascular time series. 
 
-```@index
-```
+## Package Features
 
-```@autodocs
-Modules = [Cardio]
-```
+* HRV ...
