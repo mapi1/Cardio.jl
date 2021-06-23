@@ -5,6 +5,8 @@ using Statistics
 using Plots
 using Random
 using DataStructures
+using Parameters
+using RecipesBase
 
 
 include("Utilities/util.jl")
@@ -15,10 +17,14 @@ include("Filtering/medfilt1.jl")
 include("Detection/detectRPeaks.jl")
 include("Detection/baseline.jl")
 
+include("BRS/sequenceMethod.jl")
+
 export detectRPeaks,
         adaptive_hrv_filter,
         detrend,
         medfilt1,
-        getECGBaseline
+        getECGBaseline,
+        sme, SME,
+        rmssdr
 
 end
