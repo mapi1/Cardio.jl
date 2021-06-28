@@ -1,14 +1,14 @@
 """
-    detectPWPeaks(signal, fs)
+    detectPWPeaks(signal::Vector{<:Real}, fs::Real;...)
 
 Find Peaks in a Pulswave signal with an algorithm proposed by Nenova, B., & Iliev, I. (2010). An automated algorithm for fast pulse wave detection. International Journal Bioautomation, 14(3), 203.
 
 # Args:
 
-* 'signal::Vector': Signal data
-* 'fs::Int': Sampling Frequency [Hz]
-* 'windowLenght::Int': Optional lenght of the window in ms. (standart: 300ms)
-* 'tuning': fine tuning to filter Peaks below a certain hight
+* signal: Pulswave data
+* fs: Sampling Frequency [Hz]
+* windowLenght: Optional lenght of the window in ms. (standart: 300ms)
+* tuning: fine tuning to filter Peaks below a certain height
 
 # Return:
 
