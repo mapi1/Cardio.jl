@@ -7,7 +7,7 @@ Several methods to estimate baroreflex sensitivity (BRS) have been defined, many
 Several methods can be tweaked by using keywords, though the most common and recommended parameters are set as default.
 
 ```@docs
-getBRS
+BRS.getBRS
 ```
 
 ## Sequence Method
@@ -27,7 +27,7 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 
 ```@example sme
 result = BRS.sme(input.RR, input.SBP)
-plot(result)
+plot(result, dpi = 120)
 ```
 
 ## xBRS Method
@@ -46,7 +46,7 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 
 ```@example xBRS
 result = BRS.xbrs(input.RR, input.SBP)
-plot(result)
+plot(result, dpi = 120)
 ```
 
 ## RMSSD Ratio

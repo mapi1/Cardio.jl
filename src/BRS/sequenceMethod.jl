@@ -21,12 +21,6 @@ Calculate the BaroReflex Sensitivity (BRS) for a serious of RR intervals and res
 # Return:
 
 Returns a SME struct for which a plotting recipe is provided, so that found sequences can be inspected by calling `plot()` when using Plots.jl
-# Examples
-
-```julia
-julia> sme(collect(1:10:100), collect(1:10:100))
-1.0
-```
 
 """
 function sme(RR::Vector{<:Real}, SBP::Vector{<:Real}; thresholdRR::Float64 = 5.0, thresholdSBP::Float64 = 1.0, seqLen::Int = 3, delay::Int = 1, minCor::Float64 = 0.85)
@@ -142,9 +136,8 @@ end
 
 @recipe function f(res::SME)
     
-    title := "sBRS = $(round(res.sBRS, digits = 2)), sBRSup = $(round(res.sBRSup, digits = 2)), sBRSdown= $(round(res.sBRSdown, digits = 2)) n = $(length(res.n)), nUp = $(res.nUp), nDown = $(res.nDown)"
-    titlelocation = :left
-    layout := (1,2)
+    title := "sBRS = $(round(res.sBRS, digits = 2))[ms/mmHg], #sequences = $(length(res.n))"
+    layout := (2,1)
     
     @series begin
         subplot := 1
