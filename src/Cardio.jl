@@ -3,7 +3,6 @@ module Cardio
 using DataStructures
 using DSP
 using Statistics
-using Plots
 using Random
 
 
@@ -22,6 +21,6 @@ export detectRPeaks,
         detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,
-        BRS
+        BRS, getBRS
 
 end

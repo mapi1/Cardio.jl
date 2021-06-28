@@ -10,3 +10,8 @@ end
     @test res == 1
 end
 
+@testset "xBRS" begin
+    res = BRS.xbrs(collect(1000:1000:10000), collect(1:10:100))
+    @test res.xBRSg ≈ 100
+end
+

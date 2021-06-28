@@ -117,13 +117,15 @@ end
 """
     rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
 
-Returns the RMSSD ratio 
+Returns the RMSSD ratio := RMSSD_RR / RMSSD_SBP
 """
 function rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
     rmssdr = rms(RR) / rms(SBP)
 end
 
-# add n / plot n pro mögliche n / rmssdBP / rmssdRR
+"""
+Struct that stores all information related to the sequence method. The main result is stored in 'sBRS'. It can be plotted for visual inspection.
+"""
 @with_kw mutable struct SME
     sBRS::Real = 0.0
     sBRSup::Real = 0.0

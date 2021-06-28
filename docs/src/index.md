@@ -7,4 +7,11 @@ A simple toolbox that bundles functionality to work with cardiovascular time ser
 
 ## Package Features
 
-* HRV ...
+```@contents
+Pages = [
+    "General.md",
+    "HRV.md",
+    "BRS.md",
+]
+Depth = 1
+```
