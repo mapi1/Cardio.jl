@@ -10,14 +10,6 @@ Get the baseline of an ECG signal for baseline correction. Source: Advances in C
 
 * 'ecg::Vector{<:Number}': ECG signal
 * 'samplerate::Number': Sampling rate
-
-# Examples
-
-```julia
-julia> a = getECGBaseline(ecg, samplerate)
-Vector{Float64} with ....
-```
-
 """
 function getECGBaseline(ecg::Vector{<:Real}, samplerate::Real)
     samplerate > 10 || throw(DomainError("Samplerate needs to be positive and larger than 10 Hz, is: $samplerate"))

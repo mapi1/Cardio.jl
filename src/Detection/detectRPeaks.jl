@@ -3,27 +3,19 @@
 #
 """
     detectRPeaks(ecg::Vector{<:Real}, samplerate::Real; minPeakDist::Real = 0.360)
-TODO check minDist
+
 Find R peaks in ECG signals as specified by Benitez et al.
-See http://dx.doi.org/10.1016/S0010-4825(01)00009-9 for more information
+See http://dx.doi.org/10.1016/S0010-4825(01)00009-9 for more information.
 
 # Args:
 
-* 'ecg::Vector{<:Real}': ECG data
-* 'samplerate::Real': Sampling rate [Hz]
-* 'minPeakDist::Real': minimum distance between consecutive peaks [s]
+* ecg: ECG data 
+* samplerate: Sampling rate [Hz]
+* minPeakDist: minimum distance between consecutive peaks [s]
 
 # Return:
 
 * 'res::Vector{Int64}': Vector containing the position of the R peaks in ecg, divide by samplerate to get values in a time base
-
-# Examples
-
-```julia
-julia> a = detectRPeaks(ecg, fs)
-Vector{Int64} with ....
-```
-
 """
 function detectRPeaks(ecg::Vector{<:Real}, samplerate::Real; minPeakDist::Real = 0.360)
     @assert length(ecg) > 5*samplerate "ecg is to short for this algorithm to work properly, a minimum of 5 sec is needed!"

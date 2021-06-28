@@ -1,7 +1,7 @@
 """
     detectPWPeaks(signal, fs)
 
-Find Peaks in a Pulswave signal with an algorithm proposed by Bistra Nenova and Ivo Iliev in INT. J . BIO AUTOMATION , 2010, 14(3), 203-216
+Find Peaks in a Pulswave signal with an algorithm proposed by Nenova, B., & Iliev, I. (2010). An automated algorithm for fast pulse wave detection. International Journal Bioautomation, 14(3), 203.
 
 # Args:
 

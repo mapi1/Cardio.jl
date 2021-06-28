@@ -12,6 +12,7 @@ include("Filtering/adaptive_filter.jl")
 include("Filtering/medfilt1.jl")
 
 include("Detection/detectRPeaks.jl")
+include("Detection/pulsewave.jl")
 include("Detection/baseline.jl")
 
 include("BRS/BRS.jl")
@@ -21,6 +22,7 @@ export detectRPeaks,
         detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,
-        BRS, getBRS
+        BRS, getBRS,
+        detectPWPeaks
 
 end
