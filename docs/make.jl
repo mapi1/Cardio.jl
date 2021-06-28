@@ -14,6 +14,7 @@ makedocs(;
     pages=[
         "Home" => "index.md",
         "Utility" => "Utility.md",
+        "Detection" => "Detection.md"
         "BRS" => "BRS.md",
         "HRV" => "HRV.md",
     ],

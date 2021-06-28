@@ -1,9 +1,10 @@
 # Utility Functionality
 
 ```@docs
-medfilt1
+adaptiveHRVFilter
 ```
 
 ```@docs
-adaptive_hrv_filter
+medfilt1
 ```
+

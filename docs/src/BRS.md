@@ -27,7 +27,7 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 
 ```@example sme
 result = BRS.sme(input.RR, input.SBP)
-plot(result, dpi = 200, size = (1000,650))
+plot(result)
 ```
 
 ## xBRS Method
@@ -46,7 +46,7 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 
 ```@example xBRS
 result = BRS.xbrs(input.RR, input.SBP)
-plot(result, dpi = 200, size = (1000,650))
+plot(result)
 ```
 
 ## RMSSD Ratio

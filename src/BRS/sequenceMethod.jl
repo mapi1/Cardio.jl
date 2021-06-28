@@ -117,7 +117,7 @@ end
 """
     rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
 
-Returns the RMSSD ratio := RMSSD_RR / RMSSD_SBP
+Returns the RMSSD ratio := RMSSD(RR) / RMSSD(SBP)
 """
 function rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
     rmssdr = rms(RR) / rms(SBP)

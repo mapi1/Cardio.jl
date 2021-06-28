@@ -3,12 +3,12 @@ test_values = Float64.(vec([852 845 846 851 846 846 840 825 823 821 836 854 854 
 
 # Ideal Case (No changes will be performed)
 @testset "Ideal Case" begin
-    fixed_signal, outliers, nonnormal = adaptive_hrv_filter(test_values)
+    fixed_signal, outliers, nonnormal = adaptiveHRVFilter(test_values)
     @test test_values == fixed_signal
     @test sum(outliers) == 0
     @test sum(nonnormal) == 0
 end
-fixed_signal, outliers, nonnormal = adaptive_hrv_filter(test_values)
+fixed_signal, outliers, nonnormal = adaptiveHRVFilter(test_values)
 
 # Changes but possibly physiological
 changed_idxs = [20, 21]
@@ -17,7 +17,7 @@ changed_test_values = copy(test_values)
 changed_test_values[changed_idxs] = changed_values
 
 @testset "Physiological Changes" begin
-    fixed_signal, outliers, nonnormal = adaptive_hrv_filter(changed_test_values)
+    fixed_signal, outliers, nonnormal = adaptiveHRVFilter(changed_test_values)
     notchanged = broadcast(!, nonnormal)
     @test sum(outliers) == 0
     @test changed_test_values[notchanged] == fixed_signal[notchanged]
@@ -30,7 +30,7 @@ changed_test_values = copy(test_values)
 changed_test_values[changed_idxs] = changed_values
 
 @testset "Non Physiological Changes" begin
-    fixed_signal, outliers, nonnormal = adaptive_hrv_filter(changed_test_values)
+    fixed_signal, outliers, nonnormal = adaptiveHRVFilter(changed_test_values)
     notchanged = broadcast(!, outliers)
     @test sum(nonnormal) == 0
     @test sum(outliers) == 2

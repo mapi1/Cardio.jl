@@ -17,7 +17,7 @@ include("Detection/baseline.jl")
 include("BRS/BRS.jl")
 
 export detectRPeaks,
-        adaptive_hrv_filter,
+        adaptiveHRVFilter,
         detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,

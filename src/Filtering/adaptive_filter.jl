@@ -1,5 +1,5 @@
 """
-adaptive_hrv_filter(signal::Vector{<:Real}; remove_outliers::Bool = true, replace_nonnormal::Bool = true, adaptive_controlling_coef::Real = 0.05, proportionality_limit::Real = 10/100, outlier_minz_factor::Real = 3, max_excess_hrv::Real = 20, physiological_values::Tuple{Real, Real} = (200, 2000))
+adaptiveHRVFilter(signal::Vector{<:Real}; remove_outliers::Bool = true, replace_nonnormal::Bool = true, adaptive_controlling_coef::Real = 0.05, proportionality_limit::Real = 10/100, outlier_minz_factor::Real = 3, max_excess_hrv::Real = 20, physiological_values::Tuple{Real, Real} = (200, 2000))
 
 An addaptive filter for HRV data
      Based on: Wessel, N., Voss, A., Malberg, H., Ziehmann, Ch., 
@@ -26,10 +26,10 @@ Filters out unphysiological beats in the RR series with the ability to replace t
 Return value depends on keyword args
 
 ```julia
-julia> adaptive_hrv_filter(signal)
+julia> adaptiveHRVFilter(signal)
 ```
 """
-function adaptive_hrv_filter(signal::Vector{<:Real}; remove_outliers::Bool = true, replace_nonnormal::Bool = true, adaptive_controlling_coef::Real = 0.05, proportionality_limit::Real = 10/100, outlier_minz_factor::Real = 3, max_excess_hrv::Real = 20, physiological_values::Tuple{Real, Real} = (200, 2000))
+function adaptiveHRVFilter(signal::Vector{<:Real}; remove_outliers::Bool = true, replace_nonnormal::Bool = true, adaptive_controlling_coef::Real = 0.05, proportionality_limit::Real = 10/100, outlier_minz_factor::Real = 3, max_excess_hrv::Real = 20, physiological_values::Tuple{Real, Real} = (200, 2000))
     # some input checking
     0 < adaptive_controlling_coef < 1 || throw(DomainError("adaptive_controlling_coef has to be in range 0:1."))
     physiological_values[1] < physiological_values[2] || throw(DomainError("physiological_values is a tuple with minumum first and maximum second, is: $physiological_values."))
