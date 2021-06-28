@@ -25,7 +25,7 @@ Filters out unphysiological beats in the RR series with the ability to replace t
 # Return
 Return value depends on keyword args
 
-```jldoctest
+```julia
 julia> adaptive_hrv_filter(signal)
 ```
 """

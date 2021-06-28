@@ -10,16 +10,20 @@ include("sequenceMethod.jl")
 include("xBRS.jl")
 include("../Utilities/util.jl")
     
-export sme, SME,
-rmssdr,
-xbrs, xBRS,
-getBRS
+
 
 """
+        getBRS(RR::Vector{<:Real}, SBP::Vector{<:Real})
+
 Returns all BRS measures.
 """
 function getBRS(RR::Vector{<:Real}, SBP::Vector{<:Real})
         return true        
 end
+
+export sme, SME,
+rmssdr,
+xbrs, xBRS,
+getBRS
 
 end # end module

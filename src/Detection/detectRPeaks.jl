@@ -19,7 +19,7 @@ See http://dx.doi.org/10.1016/S0010-4825(01)00009-9 for more information
 
 # Examples
 
-```jldoctest
+```julia
 julia> a = detectRPeaks(ecg, fs)
 Vector{Int64} with ....
 ```

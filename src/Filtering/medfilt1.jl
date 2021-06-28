@@ -22,7 +22,7 @@ Apply a median filter to a signal vector or array x, similar to Matlabs medfilt1
 
 # Examples
 
-```jldoctest
+```julia
 julia> medfilt1(collect(1:10))
 10-element Array{Float64,1}:
  1.0

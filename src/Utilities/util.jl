@@ -21,7 +21,7 @@ Choose p = 0 to remove only mean or input coefficents from previous detrending t
 
 # Examples
 
-```jldoctest
+```julia
 julia> signal = sin.([1:100;]) + 0.03 .* [1:100;]
 julia> detrend(signal)
 Vector{Float}
@@ -67,7 +67,7 @@ Calculate the Teil Sen Estimator (median of all slopes m = (yⱼ - yᵢ)/(xⱼ -
 
 # Examples
 
-```jldoctest
+```julia
 julia> theilSenEstimator(1:10, 1:10)
 (1.0,0.0)
 ```

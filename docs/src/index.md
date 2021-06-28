@@ -9,7 +9,8 @@ A simple toolbox that bundles functionality to work with cardiovascular time ser
 
 ```@contents
 Pages = [
-    "General.md",
+    "Utility.md",
+    "Detection.md",
     "HRV.md",
     "BRS.md",
 ]

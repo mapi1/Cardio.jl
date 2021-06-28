@@ -23,7 +23,7 @@ Calculate the BaroReflex Sensitivity (BRS) for a serious of RR intervals and res
 Returns a SME struct for which a plotting recipe is provided, so that found sequences can be inspected by calling `plot()` when using Plots.jl
 # Examples
 
-```jldoctest
+```julia
 julia> sme(collect(1:10:100), collect(1:10:100))
 1.0
 ```

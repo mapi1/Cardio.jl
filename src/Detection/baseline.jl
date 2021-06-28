@@ -13,7 +13,7 @@ Get the baseline of an ECG signal for baseline correction. Source: Advances in C
 
 # Examples
 
-```jldoctest
+```julia
 julia> a = getECGBaseline(ecg, samplerate)
 Vector{Float64} with ....
 ```
