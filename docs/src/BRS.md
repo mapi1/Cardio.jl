@@ -54,7 +54,7 @@ plot(result, dpi = 120)
 BRS.rmssdr
 ```
 
-## Tranfer Function Method
+## Transfer Function Method
 
 ```@docs
 BRS.tfbrs

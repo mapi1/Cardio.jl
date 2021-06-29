@@ -4,10 +4,12 @@ using RecipesBase
 using Statistics
 using DSP
 using Dierckx
+using FFTW
 
 
 include("sequenceMethod.jl")
 include("xBRS.jl")
+include("tfBRS.jl")
 include("../Utilities/util.jl")
     
 
@@ -30,6 +32,7 @@ end
 export sme, SME,
 rmssdr,
 xbrs, xBRS,
+tfbrs, tfBRS,
 getBRS
 
 end # end module

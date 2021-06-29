@@ -15,3 +15,10 @@ end
     @test res.xBRSg ≈ 100
 end
 
+
+@testset "tfBRS" begin
+    res = BRS.tfbrs(collect(100:100:10000), collect(1:1:100), n = 40)
+    @test res.tfBRSv ≈ 100
+end
+
+
