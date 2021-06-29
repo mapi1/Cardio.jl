@@ -54,3 +54,22 @@ plot(result, dpi = 120)
 BRS.rmssdr
 ```
 
+## Tranfer Function Method
+
+```@docs
+BRS.tfbrs
+```
+
+```@docs
+BRS.tfBRS
+```
+
+```@setup tfBRS
+using Plots, Cardio, DataFrames, CSV
+input = CSV.read("../data/BRS.csv", DataFrame)
+```
+
+```@example tfBRS
+result = BRS.tfbrs(input.RR, input.SBP, n = 100)
+plot(result, dpi = 120)
+```

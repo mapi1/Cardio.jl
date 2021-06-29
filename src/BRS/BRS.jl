@@ -15,7 +15,13 @@ include("../Utilities/util.jl")
 """
         getBRS(RR::Vector{<:Real}, SBP::Vector{<:Real})
 
-Returns all BRS measures.
+Returns all BRS measures with default settings for individual methods.
+
+# Methods
+
+* SME: Sequence Method
+* RMSSDR: RMSSD ratio
+* xBRS: Cross-correlation baroreflex sensitivity
 """
 function getBRS(RR::Vector{<:Real}, SBP::Vector{<:Real})
         return true        
