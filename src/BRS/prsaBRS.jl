@@ -1,17 +1,7 @@
-include("SequenceMethod.jl")
-include(joinpath(pwd(), "data_scripts/importData.jl"))
-
-root = "./data/omeicos_full/"
-(_, dir, files) = first(walkdir(root))
-pat = importOmeicos(root * files[3])
-SBP = pat.Rest.s
-RR = pat.Rest.t
-
-
-
-
 """
     prsabrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; L::Int = 15)
+
+Calculate a measure for BRS based on phase-rectified signal averaging as defined by Bauer et al. 2010.
 
 # Keywords
 
@@ -48,10 +38,6 @@ Struct that stores all information regarting the prsaBRS etimation. The final re
     anchorInds::Vector{<:Real} = Float64[]
 end
 
-test = prsabrs(RR, SBP)
-test2 = prsabrs(RR, SBP, L = 10)
-plot(test)
-plot!(test2)
 @recipe function f(res::prsaBRS)
     
     layout := (2,1)

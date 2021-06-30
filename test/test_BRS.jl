@@ -21,4 +21,8 @@ end
     @test res.tfBRSv ≈ 100
 end
 
+@testset "prsaBRS" begin
+    res = BRS.prsabrs(collect(100:100:1000000), collect(1:1:10000))
+    @test isapprox(res.prsaBRSv, 100, atol = 0.01)
+end
 
