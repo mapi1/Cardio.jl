@@ -75,7 +75,7 @@ plot(result, dpi = 120)
 ```
 
 ## Phase-Rectified Signal Averaging Method
-
+Source: Bauer, A., Morley-Davies, A., Barthel, P., Müller, A., Ulm, K., Malik, M., & Schmidt, G. (2010). Bivariate phase-rectified signal averaging for assessment of spontaneous baroreflex sensitivity: pilot study of the technology. Journal of electrocardiology, 43(6), 649-653. [DOI](https://doi.org/10.1016/j.jelectrocard.2010.05.012)
 ```@docs
 BRS.prsabrs
 ```
@@ -90,6 +90,6 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 ```
 
 ```@example prsabrs
-result = BRS.prsabrs(input.RR, input.SBP, n = 100)
+result = BRS.prsabrs(input.RR, input.SBP)
 plot(result, dpi = 120)
 ```
