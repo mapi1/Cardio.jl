@@ -14,5 +14,5 @@ Pages = [
     "HRV.md",
     "BRS.md",
 ]
-Depth = 1
+Depth = 2
 ```

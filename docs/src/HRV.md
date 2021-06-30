@@ -1,1 +1,5 @@
 # HRV
+
+```@docs
+adaptiveHRVFilter
+```
