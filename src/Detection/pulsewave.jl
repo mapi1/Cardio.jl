@@ -7,7 +7,7 @@ Find Peaks in a Pulswave signal with an algorithm proposed by Nenova, B., & Ilie
 
 * signal: Pulswave data
 * fs: Sampling Frequency [Hz]
-* windowLenght: Optional lenght of the window in ms. (standart: 300ms)
+* windowLenght: Optional lenght of the window in ms. (standard: 300ms)
 * tuning: fine tuning to filter Peaks below a certain height
 
 # Return:

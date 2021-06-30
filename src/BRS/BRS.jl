@@ -10,6 +10,7 @@ using FFTW
 include("sequenceMethod.jl")
 include("xBRS.jl")
 include("tfBRS.jl")
+include("prsaBRS.jl")
 include("../Utilities/util.jl")
     
 
@@ -33,6 +34,7 @@ export sme, SME,
 rmssdr,
 xbrs, xBRS,
 tfbrs, tfBRS,
+prsabrs, prsaBRS,
 getBRS
 
 end # end module

@@ -73,3 +73,23 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 result = BRS.tfbrs(input.RR, input.SBP, n = 100)
 plot(result, dpi = 120)
 ```
+
+## Phase-Rectified Signal Averaging Method
+
+```@docs
+BRS.prsabrs
+```
+
+```@docs
+BRS.prsaBRS
+```
+
+```@setup prsabrs
+using Plots, Cardio, DataFrames, CSV
+input = CSV.read("../data/BRS.csv", DataFrame)
+```
+
+```@example prsabrs
+result = BRS.prsabrs(input.RR, input.SBP, n = 100)
+plot(result, dpi = 120)
+```

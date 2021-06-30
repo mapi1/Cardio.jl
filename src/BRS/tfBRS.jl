@@ -92,7 +92,7 @@ end
     end
     @series begin
         subplot := 1
-        title := "tfBRS = $(round(res.tfBRSv, digits = 2))"
+        title := "tfBRS = $(round(res.tfBRSv, digits = 2)) ms/mmHg"
         seriestype := :scatter
         marker := :d
         yguide := "ms/mmHG"
