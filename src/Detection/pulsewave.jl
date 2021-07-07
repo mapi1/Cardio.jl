@@ -1,7 +1,7 @@
 """
-    detectPWPeaks(signal::Vector{<:Real}, fs::Real;...)
+    detectPWPeaks(signal::Vector{<:Real}, fs::Real; windowLength::Int = 300, tuning::Real = 0.7)
 
-Find Peaks in a Pulswave signal with an algorithm proposed by Nenova, B., & Iliev, I. (2010). An automated algorithm for fast pulse wave detection. International Journal Bioautomation, 14(3), 203.
+Find Peaks in a pulsewave signal with an algorithm proposed by Nenova, B., & Iliev, I. (2010). An automated algorithm for fast pulse wave detection. International Journal Bioautomation, 14(3), 203.
 
 # Args:
 
@@ -14,7 +14,7 @@ Find Peaks in a Pulswave signal with an algorithm proposed by Nenova, B., & Ilie
 
 Returns a Vector containing the Peak indices. Use signal[indices] to access the Peak values.
 """
-function detectPWPeaks(signal::Vector{<:Real}, fs::Real; windowLength = 300, tuning = 0.7)
+function detectPWPeaks(signal::Vector{<:Real}, fs::Real; windowLength::Int = 300, tuning::Real = 0.7)
     # bandpass filter
     lowPass = Lowpass(12, fs = fs)
     highPass = Highpass(0.5, fs = fs)

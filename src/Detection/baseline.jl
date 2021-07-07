@@ -8,8 +8,8 @@ Get the baseline of an ECG signal for baseline correction. Source: Advances in C
 
 # Args:
 
-* 'ecg::Vector{<:Number}': ECG signal
-* 'samplerate::Number': Sampling rate
+* ecg: ECG signal
+* samplerate: Sampling rate
 """
 function getECGBaseline(ecg::Vector{<:Real}, samplerate::Real)
     samplerate > 10 || throw(DomainError("Samplerate needs to be positive and larger than 10 Hz, is: $samplerate"))
