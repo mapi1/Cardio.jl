@@ -88,7 +88,8 @@ end
 
     @series begin
         subplot := 2
-        label := "prsaBRSNorm = $(round(res.prsaBRSNormv, digits = 2)) ms/mmHg"
+        seriestype := :scatter
+        label := "prsaBRS = $(round(res.prsaBRSv, digits = 2)) ms"
         marker := :circ    
         yguide := "ΔRR [ms]"
         seriescolor := :black
@@ -100,7 +101,8 @@ end
 
     @series begin
         subplot := 2
-        label := "prsaBRS = $(round(res.prsaBRSv, digits = 2)) ms"
+        seriestype := :scatter
+        label := "prsaBRSNorm = $(round(res.prsaBRSNormv, digits = 2)) ms/mmHg"
         marker := :circ    
         yguide := "ΔRR [ms]"
         seriescolor := :black

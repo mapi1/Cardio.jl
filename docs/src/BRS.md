@@ -85,12 +85,12 @@ BRS.arBRS
 ```
 
 ```@setup arBRS
-using Plots, Cardio, DataFrames, CSV
+using Plots, Cardio, DataFrames, CSV, Statistics
 input = CSV.read("../data/BRS.csv", DataFrame)
 ```
 
 ```@example arBRS
-result = BRS.arbrs(input.RR, input.SBP, sf = 1000 / mean(input.RR))
+result = BRS.arbrs(input.RR, input.SBP; sf = 1000 / mean(input.RR))
 plot(result, dpi = 120)
 ```
 
