@@ -55,6 +55,7 @@ end
 
     colHF = :red
     colLF = :green
+    cap(spec, lim) = replace(x -> x >= lim ? lim : x , spec)
 
     @series begin
         subplot := 1
@@ -64,7 +65,7 @@ end
         fill := (0, :grey)
         seriesalpha := 0.6
         
-        freq, res.fullSBP
+        freq, cap(res.fullSBP, 2maximum([res.LFSBP; res.HFSBP]))
     end
 
     @series begin
@@ -99,7 +100,7 @@ end
         fill := (0, :grey)
         seriesalpha := 0.6
         
-        freq, res.fullRR
+        freq, cap(res.fullRR, 2maximum([res.LFRR; res.HFRR]))
     end
 
     @series begin
