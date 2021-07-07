@@ -27,7 +27,7 @@ Transfer function based BRS measure as defined by Robbe et al.
     
 * n: length of hamming window for spectral estimation, defaults to length(RR) ÷ 10
 * minCoh: minimal valid coherence, defaults to 0.5
-* LF: The frequency range defined as low frequeny, defaults to (0.04, 0.15)
+* LF: The frequency range defined as low frequency, defaults to (0.04, 0.15)
 """
 function tfbrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; n = length(RR) ÷ 10, minCoh = 0.5, LF::Tuple{Float64, Float64} = (0.04, 0.15))
     0 < minCoh < 1 || throw(DomainError("Coherence is defined between 0 and 1"))
@@ -58,7 +58,7 @@ end
 
 
 """
-Struct that stores all information regarting the tfBRS etimation. The final result is stored in 'tfBRSv'. It can be plotted for visual inspection.
+Struct that stores all information regarding the tfBRS estimation. The final result is stored in 'tfBRSv'. It can be plotted for visual inspection.
 """
 @with_kw mutable struct tfBRS
     tfBRSv::Float64 = 0
@@ -75,7 +75,7 @@ end
     freqs = range(0, 0.5, length = length(res.tfMag))
     @series begin
         subplot := 1
-        yguide := "ms/mmHG"
+        yguide := "ms/mmHg"
         label := ""
         color := :grey
         
@@ -84,7 +84,7 @@ end
     @series begin
         subplot := 1
         seriestype := :vline
-        yguide := "ms/mmHG"
+        yguide := "ms/mmHg"
         label := ""
         color := :red
 
@@ -95,7 +95,7 @@ end
         title := "tfBRS = $(round(res.tfBRSv, digits = 2)) ms/mmHg"
         seriestype := :scatter
         marker := :d
-        yguide := "ms/mmHG"
+        yguide := "ms/mmHg"
         label := ""
         color := :red
 

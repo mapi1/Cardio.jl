@@ -4,3 +4,10 @@
 medfilt1
 ```
 
+```@docs
+arDecomposition
+```
+
+```@docs
+getSpectralComponent
+```

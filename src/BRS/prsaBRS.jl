@@ -28,7 +28,7 @@ function prsabrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; L::Int = 15)
 end
 
 """
-Struct that stores all information regarting the prsaBRS etimation. The final result is stored in 'prsaBRSv'. It can be plotted for visual inspection.
+Struct that stores all information regarding the prsaBRS estimation. The final result is stored in 'prsaBRSv'. It can be plotted for visual inspection.
 """
 @with_kw mutable struct prsaBRS
     L::Int = 0

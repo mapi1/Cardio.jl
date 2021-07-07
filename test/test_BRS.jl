@@ -26,3 +26,9 @@ end
     @test isapprox(res.prsaBRSv, 100, atol = 0.01)
 end
 
+@testset "arBRS" begin
+    res = BRS.arbrs(collect(1.0:1000.0), collect(1.0:1000.0))
+    @test isapprox(res.αHF, 1)
+    @test isnan(res.αLF)
+end
+

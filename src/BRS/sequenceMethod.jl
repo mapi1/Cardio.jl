@@ -1,22 +1,16 @@
 """
     sme(RR::Vector{<:Real}, SBP::Vector{<:Real}; thresholdRR::Float64 = 4.0, thresholdSBP::Float64 = 1.0, seqLen::Int = 3, delay::Int = 1, minCor::Float64 = 0.8)
 
-Calculate the BaroReflex Sensitivity (BRS) for a serious of RR intervals and respectiv systolic bloodpressure using the Sequence Method (SME).
-
-# Args:
-
-* 'RR::Vector': Data Vector containing the RR intervals
-* 'SBP::Vector': Data Vector containing the systolic bloodpressure
+Calculate the Baroreflex Sensitivity (BRS) for a serious of RR intervals and respective systolic blood pressure using the Sequence Method (SME).
 
 # Keywords:
 
-* 'thresholdRR::Float64': Threshold for change in RR interval to qualify for a valid sequence (literature: 4ms)
-* 'thresholdSBP::Float64': Threshold for change in SBP to qualify for a valid sequence (literature: 1mmHg)
-* 'seqLen::Int': Minimum length of a valid sequence (literature: 3)
-* 'delay::Int': Delay between RR and SBP (literature: 1)
-* 'minCor::Float64': The minimal correlation between RR and SBP in a sequence to qualify as a valid sequence
+* thresholdRR: Threshold for change in RR interval to qualify for a valid sequence (literature: 4ms)
+* thresholdSBP: Threshold for change in SBP to qualify for a valid sequence (literature: 1mmHg)
+* seqLen: Minimum length of a valid sequence (literature: 3)
+* delay: Delay between RR and SBP (literature: 1)
+* minCor: The minimal correlation between RR and SBP in a sequence to qualify as a valid sequence
 
-* 'BRS::Float64': The BRS as estimated by the Sequence Method
 
 # Return:
 

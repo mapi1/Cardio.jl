@@ -23,6 +23,7 @@ export detectRPeaks,
         medfilt1,
         getECGBaseline,
         BRS, getBRS,
+        getSpectralComponent, arDecomposition,
         detectPWPeaks
 
 end
