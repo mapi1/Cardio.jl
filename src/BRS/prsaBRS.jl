@@ -11,6 +11,7 @@ function prsabrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; L::Int = 15)
     L > 0 || throw(DomainError("L needs to be greater 0, 15 is recommended"))
     # find all anchor points (SBP[i] >= SBP[i-1])
     isAnchor = [false; diff(SBP) .> 0]
+    meanΔSBP = mean(filter(x -> x > 0, diff(SBP)))
     anchorInds =  collect(1:length(SBP))[isAnchor]
     
     # Select segments
@@ -23,16 +24,18 @@ function prsabrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; L::Int = 15)
     
     meanSegment = vec(mean(segments, dims = 2))
     prsaBRSv = 0.25(meanSegment[L+1] + meanSegment[L+2] - meanSegment[L] - meanSegment[L-1])
+    prsaBRSNormv = prsaBRSv / meanΔSBP 
 
-    return prsaBRS(prsaBRSv = prsaBRSv, meanSegment = meanSegment, segments = segments, L = L, anchorInds = anchorInds) 
+    return prsaBRS(prsaBRSv = prsaBRSv, prsaBRSNormv = prsaBRSNormv, meanSegment = meanSegment, segments = segments, L = L, anchorInds = anchorInds) 
 end
 
 """
-Struct that stores all information regarding the prsaBRS estimation. The final result is stored in 'prsaBRSv'. It can be plotted for visual inspection.
+Struct that stores all information regarding the prsaBRS estimation. The final result is stored in `prsaBRSv` or `prsaBRSNormv` for a normalized value. It can be plotted for visual inspection.
 """
 @with_kw mutable struct prsaBRS
     L::Int = 0
     prsaBRSv::Real = 0
+    prsaBRSNormv::Real = 0
     segments::Matrix{<:Real} = zeros(Float64, 1,1)
     meanSegment::Vector{<:Real} = Float64[]
     anchorInds::Vector{<:Real} = Float64[]
@@ -75,11 +78,35 @@ end
 
     @series begin
         subplot := 2
-        label := "prsaBRS = $(round(res.prsaBRSv, digits = 2)) ms"
+        label := ""
         marker := :d    
         yguide := "ΔRR [ms]"
         seriescolor := :red
         
         (-2:1), res.meanSegment[(-2:1) .+ (L+1)]
+    end
+
+    @series begin
+        subplot := 2
+        label := "prsaBRSNorm = $(round(res.prsaBRSNormv, digits = 2)) ms/mmHg"
+        marker := :circ    
+        yguide := "ΔRR [ms]"
+        seriescolor := :black
+        ylims := (minimum(res.meanSegment), maximum(res.meanSegment))
+
+        
+        [0,0], [minimum(res.meanSegment)-10, minimum(res.meanSegment)-10]
+    end
+
+    @series begin
+        subplot := 2
+        label := "prsaBRS = $(round(res.prsaBRSv, digits = 2)) ms"
+        marker := :circ    
+        yguide := "ΔRR [ms]"
+        seriescolor := :black
+        ylims := (minimum(res.meanSegment), maximum(res.meanSegment))
+
+        
+        [0,0], [minimum(res.meanSegment)-10, minimum(res.meanSegment)-10]
     end
 end

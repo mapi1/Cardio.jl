@@ -74,7 +74,7 @@ result = BRS.tfbrs(input.RR, input.SBP, n = 100)
 plot(result, dpi = 120)
 ```
 
-## Transfer Function Method
+## Spectral AR-based Method
 
 ```@docs
 BRS.arbrs
@@ -90,7 +90,7 @@ input = CSV.read("../data/BRS.csv", DataFrame)
 ```
 
 ```@example arBRS
-result = BRS.ar(input.RR, input.SBP, sf = 1000 / mean(input.RR))
+result = BRS.arbrs(input.RR, input.SBP, sf = 1000 / mean(input.RR))
 plot(result, dpi = 120)
 ```
 
