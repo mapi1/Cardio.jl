@@ -40,7 +40,7 @@ uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 version = "1.16.0+6"
 
 [[Cardio]]
-deps = ["CSV", "DSP", "DataFrames", "DataStructures", "Dierckx", "Parameters", "Random", "RecipesBase", "Statistics"]
+deps = ["CSV", "DSP", "DataFrames", "DataStructures", "Dierckx", "FFTW", "Parameters", "Polynomials", "Random", "RecipesBase", "Statistics"]
 path = ".."
 uuid = "2ed24fd3-b6ad-475f-ae55-8f4b1ccf3cea"
 version = "0.1.0"
@@ -201,9 +201,9 @@ version = "1.4.3"
 
 [[FFTW_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "5a0d4b6a22a34d17d53543bd124f4b08ed78e8b0"
+git-tree-sha1 = "3676abafff7e4ff07bbd2c42b3d8201f31653dcc"
 uuid = "f5851436-0d7a-5f13-b9de-f02708fd171a"
-version = "3.3.9+7"
+version = "3.3.9+8"
 
 [[FixedPointNumbers]]
 deps = ["Statistics"]
