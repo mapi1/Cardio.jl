@@ -1,16 +1,16 @@
 """
     adaptiveHRVFilter(signal::Vector{<:Real}; removeOutliers::Bool = true, replaceNonNormal::Bool = true, adaptiveControllingCoef::Real = 0.05, proportionalLimit::Real = 10/100, controllingFilterCoef::Real = 3, controllingBasicVariability::Real = 20, physiological_values::Tuple{Real, Real} = (200, 2000))
 
-An adaptive filter for HRV data
+An adaptive filter for HRV data. Filters out nonphysiological beats in the RR series with the ability to replace them.
+
 Based on: Wessel, N., Voss, A., Malberg, H., Ziehmann, Ch., Voss, H. U., Schirdewan, A., Meyerfeldt, U.,Kurths, J.: Nonlinear analysis of complex phenomena in cardiological data, Herzschr. Elektrophys., 11(3), 2000, 159-173, doi:10.1007/s003990070035.
 
-Filters out nonphysiological beats in the RR series with the ability to replace them.
 
-# Args:
+# Input
 
 * signal: HRV in ms
 
-# Keyword Args
+# Keyword Arguments
 
 * removeOutliers: option if nonphysiological outliers shall be removed, defaults to true
 * replaceNonNormal: if true, non normal HRV values are replaced with a random value sampled from an adaptive interval to not falsely decrease variability.
