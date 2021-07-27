@@ -27,6 +27,4 @@ export detectRPeaks,
         BRS, 
         getSpectralComponent, arDecomposition,
         detectPWPeaks
-
-
 end

@@ -28,16 +28,12 @@ function arbrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; p::Union{Int, UnitRange{
     HFSBP = getSpectralComponent(SSBP, centerFrequenciesSBP, HF)
     fullSBP = getSpectralComponent(SSBP, centerFrequenciesSBP)
 
+    αLF, αHF = NaN, NaN
     try # something became negative here
         αLF = sqrt(sum(LFRR) / sum(LFSBP))
-    catch
-        αLF = NaN
-    end
-
-    try
         αHF = sqrt(sum(HFRR) / sum(HFSBP))
     catch
-        αHF = NaN
+        @warn "Some spectral components were negative."
     end
 
     return arBRS(αLF = αLF, αHF = αHF, LFRR = LFRR, LFSBP = LFSBP, HFRR = HFRR, HFSBP = HFSBP, f = collect(f), fullRR = fullRR, fullSBP = fullSBP)

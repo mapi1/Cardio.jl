@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        julia-version: ['1.0', '1.5']
+        julia-version: ['1.0', '1.6']
         julia-arch: [x64, x86]
         os: [ubuntu-latest, windows-latest, macOS-latest]
         exclude:
@@ -33,4 +33,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: julia-actions/julia-uploadcodecov@latest
-        if:  ${{ startsWith(matrix.os, 'Ubuntu') && startsWith(matrix.julia-version, '1.5') }}
+        if:  ${{ startsWith(matrix.os, 'Ubuntu') && startsWith(matrix.julia-version, '1.6') }}
