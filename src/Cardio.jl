@@ -4,6 +4,7 @@ using DataStructures
 using DSP
 using Statistics
 using Random
+using Reexport
 
 include("Utilities/util.jl")
 
@@ -16,13 +17,16 @@ include("Detection/baseline.jl")
 
 include("BRS/BRS.jl")
 
+@reexport using .BRS: getBRS
+
 export detectRPeaks,
         adaptiveHRVFilter,
         detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,
-        BRS, getBRS,
+        BRS, 
         getSpectralComponent, arDecomposition,
         detectPWPeaks
+
 
 end

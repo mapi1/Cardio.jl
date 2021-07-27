@@ -96,7 +96,7 @@ function sme(RR::Vector{<:Real}, SBP::Vector{<:Real}; thresholdRR::Float64 = 5.0
     slopeUp = slopes[direction]
     slopeDown = slopes[direction .== false]
     # return (mean(slopes), mean(slopes2))
-    result = SME(sBRS = mean(slopes), sBRSup= mean(slopeUp), sBRSdown= mean(slopeDown), nUp = nUp, nDown = nDown, start = start, n = n, direction = direction, SBP = SBP, RR = RR)
+    result = SME(value = mean(slopes), sBRSup= mean(slopeUp), sBRSdown= mean(slopeDown), nUp = nUp, nDown = nDown, start = start, n = n, direction = direction, SBP = SBP, RR = RR)
     return result
     # return (mean(slopes), mean(slopeUp), mean(slopeDown), nUp, nDown, start, n, direction)
     # return (median(slopes), median(slopeUp), median(slopeDown), nUp, nDown)
@@ -112,10 +112,10 @@ function rmssdr(RR::Vector{<:Real}, SBP::Vector{<:Real})
 end
 
 """
-Struct that stores all information related to the sequence method. The main result is stored in 'sBRS'. It can be plotted for visual inspection.
+Struct that stores all information related to the sequence method. The main result is stored in 'value'. It can be plotted for visual inspection.
 """
 @with_kw mutable struct SME
-    sBRS::Real = 0.0
+    value::Real = 0.0
     sBRSup::Real = 0.0
     sBRSdown::Real = 0.0
     delay::Int = 0
@@ -130,7 +130,7 @@ end
 
 @recipe function f(res::SME)
     
-    title := "sBRS = $(round(res.sBRS, digits = 2))[ms/mmHg], #sequences = $(length(res.n))"
+    title := "sBRS = $(round(res.value, digits = 2))[ms/mmHg], #sequences = $(length(res.n))"
     layout := (2,1)
     
     @series begin

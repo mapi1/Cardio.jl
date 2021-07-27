@@ -40,7 +40,7 @@ function xbrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; minCor::Real = 0.632, tEx
     xBRSg = gmean(xBRSs[valid])
     xBRSg2 = gmean(xBRSs2[valid])
     
-    return xBRS(xBRSg = xBRSg, 
+    return xBRS(value = xBRSg, 
     xBRSg2 = xBRSg2,
     xBRSs = xBRSs,
     xBRSs2 = xBRSs2,
@@ -56,7 +56,7 @@ end
 Struct that stores all information regarting the xBRS etimation. The final result is stored in 'xBRSg'. It can be plotted for visual inspection.
 """
 @with_kw mutable struct xBRS
-    xBRSg::Real = 0
+    value::Real = 0
     xBRSg2::Real = 0
     nValid::Int = 0
     xBRSs::Vector{<:Real} = Float64[]
@@ -142,7 +142,7 @@ gmean(x::Vector{<:Real}) = exp(1/length(x) * sum(log.(x)))
         seriestype := :hline
         yguide := "xBRS [ms/mmHg]"
         xguide := "beat #"
-        label := "xBRS: $(round(res.xBRSg, digits = 2)) ms/mmHg"
+        label := "xBRS: $(round(res.value, digits = 2)) ms/mmHg"
         legend := :topright
         seriescolor := :steelblue
 

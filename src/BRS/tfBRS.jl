@@ -53,15 +53,15 @@ function tfbrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; n = length(RR) ÷ 10, mi
     inds = indsLF[findall(x -> κ[x] >= minCoh, indsLF)]
     tfBRSv = mean(abs.(tf[inds]))
 
-    return tfBRS(tfBRSv = tfBRSv, minCoh = minCoh, κ = κ, tfMag = abs.(tf), inds = inds)
+    return tfBRS(value = tfBRSv, minCoh = minCoh, κ = κ, tfMag = abs.(tf), inds = inds)
 end
 
 
 """
-Struct that stores all information regarding the tfBRS estimation. The final result is stored in 'tfBRSv'. It can be plotted for visual inspection.
+Struct that stores all information regarding the tfBRS estimation. The final result is stored in 'value'. It can be plotted for visual inspection.
 """
 @with_kw mutable struct tfBRS
-    tfBRSv::Float64 = 0
+    value::Float64 = 0
     minCoh::Float64 = 0
     LF::Tuple{Float64, Float64} = (0.04, 0.15)
     κ::Vector{<:Real} = Float64[]
@@ -92,7 +92,7 @@ end
     end
     @series begin
         subplot := 1
-        title := "tfBRS = $(round(res.tfBRSv, digits = 2)) ms/mmHg"
+        title := "tfBRS = $(round(res.value, digits = 2)) ms/mmHg"
         seriestype := :scatter
         marker := :d
         yguide := "ms/mmHg"

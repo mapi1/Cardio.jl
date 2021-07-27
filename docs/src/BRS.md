@@ -7,7 +7,7 @@ Several methods to estimate baroreflex sensitivity (BRS) have been defined, many
 Several methods can be tweaked by using keywords, though the most common and recommended parameters are set as default.
 
 ```@docs
-BRS.getBRS
+getBRS
 ```
 
 ## Sequence Method

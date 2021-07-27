@@ -26,16 +26,16 @@ function prsabrs(RR::Vector{<:Real}, SBP::Vector{<:Real}; L::Int = 15)
     prsaBRSv = 0.25(meanSegment[L+1] + meanSegment[L+2] - meanSegment[L] - meanSegment[L-1])
     prsaBRSNormv = prsaBRSv / meanΔSBP 
 
-    return prsaBRS(prsaBRSv = prsaBRSv, prsaBRSNormv = prsaBRSNormv, meanSegment = meanSegment, segments = segments, L = L, anchorInds = anchorInds) 
+    return prsaBRS(value = prsaBRSv, valueNorm = prsaBRSNormv, meanSegment = meanSegment, segments = segments, L = L, anchorInds = anchorInds) 
 end
 
 """
-Struct that stores all information regarding the prsaBRS estimation. The final result is stored in `prsaBRSv` or `prsaBRSNormv` for a normalized value. It can be plotted for visual inspection.
+Struct that stores all information regarding the prsaBRS estimation. The final result is stored in `value` or `valueNorm` for a normalized value. It can be plotted for visual inspection.
 """
 @with_kw mutable struct prsaBRS
     L::Int = 0
-    prsaBRSv::Real = 0
-    prsaBRSNormv::Real = 0
+    value::Real = 0
+    valueNorm::Real = 0
     segments::Matrix{<:Real} = zeros(Float64, 1,1)
     meanSegment::Vector{<:Real} = Float64[]
     anchorInds::Vector{<:Real} = Float64[]
@@ -89,7 +89,7 @@ end
     @series begin
         subplot := 2
         seriestype := :scatter
-        label := "prsaBRS = $(round(res.prsaBRSv, digits = 2)) ms"
+        label := "prsaBRS = $(round(res.value, digits = 2)) ms"
         marker := :circ    
         yguide := "ΔRR [ms]"
         seriescolor := :black
@@ -102,7 +102,7 @@ end
     @series begin
         subplot := 2
         seriestype := :scatter
-        label := "prsaBRSNorm = $(round(res.prsaBRSNormv, digits = 2)) ms/mmHg"
+        label := "prsaBRSNorm = $(round(res.valueNorm, digits = 2)) ms/mmHg"
         marker := :circ    
         yguide := "ΔRR [ms]"
         seriescolor := :black
