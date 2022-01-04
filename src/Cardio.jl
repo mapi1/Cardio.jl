@@ -16,15 +16,15 @@ include("Detection/pulsewave.jl")
 include("Detection/baseline.jl")
 
 include("BRS/BRS.jl")
-
-@reexport using .BRS: getBRS
+@reexport using .BRS
 
 export detectRPeaks,
         adaptiveHRVFilter,
         detrend, theilSenEstimator,
         medfilt1,
         getECGBaseline,
-        BRS, 
+        BRS,
+        getBRS, 
         getSpectralComponent, arDecomposition,
         detectPWPeaks
 end
