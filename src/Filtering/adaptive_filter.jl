@@ -36,7 +36,7 @@ function adaptiveHRVFilter(signal::Vector{<:Real}; removeOutliers::Bool = true, 
     # Remove values that are out of range of Physiological Heart beats
     if removeOutliers
         ok = (physiological_values[1] .<= signal .<= physiological_values[2])
-        removed_nonphysiological_outliers = broadcast(!, ok)
+        removed_nonphysiological_outliers = .!ok
         signal = signal[ok]
         @assert length(signal) >= 1 "Signal contains only outliers, recheck parameters."
     end
@@ -85,8 +85,11 @@ function adaptiveHRVFilter(signal::Vector{<:Real}; removeOutliers::Bool = true, 
     # Just change reference, no copy
     fixed_signal = signal
     nonnormal_values = broadcast(!, normal_values)
-    fixed_signal[nonnormal_values] = adaptive_mean[nonnormal_values] + (randn(sum(nonnormal_values)) .- 0.5) .* adaptive_sigma[nonnormal_values]
-    
+    if eltype(signal) <: Int
+        fixed_signal[nonnormal_values] = round.(Int, adaptive_mean[nonnormal_values] + (randn(sum(nonnormal_values)) .- 0.5) .* adaptive_sigma[nonnormal_values])
+    else
+        fixed_signal[nonnormal_values] = adaptive_mean[nonnormal_values] + (randn(sum(nonnormal_values)) .- 0.5) .* adaptive_sigma[nonnormal_values]
+    end
     # Calculate second filtered Signal (Through Binominal Filter)
     #filtered_fixed_signal =  vec(sum(fixed_signal[hrv_idx_mat] .* filter_values', dims = 2))
     filtered_fixed_signal = filtfilt(bin_coeff, fixed_signal) 
@@ -97,8 +100,12 @@ function adaptiveHRVFilter(signal::Vector{<:Real}; removeOutliers::Bool = true, 
     normal_fixed_hrv_values = abs.(fixed_signal - adaptive_fixed_mean) .<= (controllingFilterCoef .* adaptive_fixed_sigma .+ controllingBasicVariability)
 
     fixed_fixed_signal = fixed_signal
-    nonnormal_fixed_values = broadcast(!, normal_fixed_hrv_values)
-    fixed_fixed_signal[nonnormal_fixed_values] = adaptive_fixed_mean[nonnormal_fixed_values] + (randn(sum(nonnormal_fixed_values)) .- 0.5) .* adaptive_fixed_sigma[nonnormal_fixed_values]
+    nonnormal_fixed_values = .!normal_fixed_hrv_values
+    if eltype(signal) <: Int
+        fixed_fixed_signal[nonnormal_fixed_values] = round.(Int, adaptive_fixed_mean[nonnormal_fixed_values] + (randn(sum(nonnormal_fixed_values)) .- 0.5) .* adaptive_fixed_sigma[nonnormal_fixed_values])
+    else
+        fixed_fixed_signal[nonnormal_fixed_values] = adaptive_fixed_mean[nonnormal_fixed_values] + (randn(sum(nonnormal_fixed_values)) .- 0.5) .* adaptive_fixed_sigma[nonnormal_fixed_values]
+    end
 
     # Returns
     if replaceNonNormal
